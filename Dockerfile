@@ -1,10 +1,10 @@
-FROM node:7.4
+FROM node:alpine
 
-RUN useradd --user-group --create-home --shell /bin/false app
+# RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 WORKDIR $HOME
 
-RUN npm install -g @angular/cli -g yarn && npm cache clean
-RUN wget -qO- https://get.docker.com/ | sh && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add ca-certificates && update-ca-certificates && apk add wget && apk add docker
+RUN npm install -g @angular/cli -g yarn && npm cache clean --force
 
