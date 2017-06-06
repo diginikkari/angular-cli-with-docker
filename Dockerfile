@@ -5,6 +5,6 @@ RUN useradd --user-group --create-home --shell /bin/false app
 ENV HOME=/home/app
 WORKDIR $HOME
 
-RUN npm install -g @angular/cli && npm cache clean
+RUN npm install -g @angular/cli -g yarn && npm cache clean
 RUN wget -qO- https://get.docker.com/ | sh && rm -rf /var/lib/apt/lists/*
 
